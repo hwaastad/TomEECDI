@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomee>
+    <!-- see http://tomee.apache.org/containers-and-resources.html -->
+
+    <!-- activate next line to be able to deploy applications in apps -->
+    <!--<Deployments file="/home/helge/.m2/repository/no/datametrix/vsf-adapter/1.0-SNAPSHOT/vsf-adapter-1.0-SNAPSHOT.rar" /> -->
+   <!-- <Resource id="MyResourceAdapter" type="ActiveMQResourceAdapter">
+        BrokerXmlConfig =
+        ServerUrl       = tcp://127.0.0.1:61616
+    </Resource>-->
+    <Resource id="MyResourceAdapter" type="ActiveMQResourceAdapter">
+        BrokerXmlConfig =  broker:(tcp://0.0.0.0:61616)
+        ServerUrl       = tcp://127.0.0.1:61616
+    </Resource>
+    <Resource id="MyConnectionFactory" type="javax.jms.ConnectionFactory">
+        ResourceAdapter = MyResourceAdapter
+    </Resource>
+    <Container id="MyMdbContainer" ctype="MESSAGE">
+        ResourceAdapter = MyResourceAdapter
+    </Container>
+    <Resource id="jms/myTopic" type="javax.jms.Topic"/>
+</tomee>

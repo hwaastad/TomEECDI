@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomee>
+    <Deployments dir="apps" />
+   <!-- <Resource id="MyResourceAdapter" type="ActiveMQResourceAdapter">
+        BrokerXmlConfig =
+        ServerUrl       = tcp://127.0.0.1:61616
+    </Resource>-->
+    <Resource id="MyResourceAdapter" type="ActiveMQResourceAdapter">
+        BrokerXmlConfig =  broker:(tcp://0.0.0.0:61616)
+        ServerUrl       = tcp://127.0.0.1:61616
+    </Resource>
+    <Resource id="MyConnectionFactory" type="javax.jms.ConnectionFactory">
+        ResourceAdapter = MyResourceAdapter
+    </Resource>
+    <Container id="MyMdbContainer" ctype="MESSAGE">
+        ResourceAdapter = MyResourceAdapter
+    </Container>
+    <Resource id="jms/myTopic" type="javax.jms.Topic"/>
+</tomee>
